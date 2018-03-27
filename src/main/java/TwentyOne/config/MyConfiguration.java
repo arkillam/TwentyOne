@@ -7,6 +7,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * A simple configuration telling Spring that resources are in /resources and JSPS in /views.
+ */
+
 @Configuration
 @ComponentScan(basePackages = "TwentyOne")
 @EnableWebMvc

@@ -9,7 +9,7 @@
 <link href="<c:url value="/resources/css/TwentyOne.css" />"
 	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-3.3.1.min.js" />"></script>
-<title>Home</title>
+<title>${title}</title>
 
 <script>
 	$(function() {
@@ -21,8 +21,12 @@
 </head>
 
 <body>
-	<p class="pageheader">Hello World!</p>
-	<p>This is the homepage!</p>
+	<p class="pageheader">${title}</p>
+
+	<c:if test="${not empty message}">
+		<p>${message}</p>
+	</c:if>
+
 </body>
 
 </html>
