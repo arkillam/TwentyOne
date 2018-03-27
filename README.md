@@ -5,3 +5,5 @@ https://search.maven.org/#artifactdetails%7Cfr.uha.ensisa.ff%7Cspring-mvc-archet
 Also found these instructions handy (was using mvn from the command lind until now):
 
 http://www.codejava.net/frameworks/spring/creating-a-spring-mvc-project-using-maven-and-eclipse-in-one-minute
+
+Caution:  archetype created a Spring 3 project, I had to manually upgrade to the Spring 5 that I wanted (only change of note was reworking the configuration class a bit)
