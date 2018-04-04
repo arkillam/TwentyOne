@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import TwentyOne.beans.SimpleMessageBean;
+
 /**
- * For now, this class simply delivers the homepage, with a "hello world" message.
+ * This class simply delivers the homepage.
  */
 
 @Controller
@@ -28,8 +30,15 @@ public class HomeController {
 @RequestMapping(value = "/")
 public ModelAndView test(HttpServletResponse response) throws IOException {
 	ModelAndView rc = new ModelAndView("TitleAndMessage");
-	rc.getModel().put("title", "Hello World!");
-	rc.getModel().put("message", "This is the homepage.");
+
+	SimpleMessageBean smb = new SimpleMessageBean();
+	smb.setTitle("Hello World!");
+	smb.addErrorMessage("This is an error message.");
+	smb.addErrorMessage("This is also an error message.");
+	smb.setMessage("Hello World!  This is the homepage.");
+
+	rc.getModel().put("smb", smb);
+
 	return rc;
 }
 

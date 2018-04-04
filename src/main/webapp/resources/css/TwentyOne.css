@@ -3,3 +3,8 @@
     font: normal;
     font-size: 20pt;
 }
+
+.errorMessage {
+    color: red;
+    font: bold;
+}
