@@ -33,8 +33,8 @@ public ModelAndView test(HttpServletResponse response) throws IOException {
 
 	SimpleMessageBean smb = new SimpleMessageBean();
 	smb.setTitle("Hello World!");
-	smb.addErrorMessage("This is an error message.");
-	smb.addErrorMessage("This is also an error message.");
+	// smb.addErrorMessage("This is an error message.");
+	// smb.addErrorMessage("This is also an error message.");
 	smb.setMessage("Hello World!  This is the homepage.");
 
 	rc.getModel().put("smb", smb);

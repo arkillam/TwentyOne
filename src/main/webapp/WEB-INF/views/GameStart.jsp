@@ -10,6 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="<c:url value="/resources/css/TwentyOne.css" />"
 	rel="stylesheet">
+<link href="<c:url value="/resources/css/Buttons.css" />"
+	rel="stylesheet">
 <script src="<c:url value="/resources/js/jquery-3.3.1.min.js" />"></script>
 <title>${go.title}</title>
 
@@ -24,25 +26,26 @@
 
 <body>
 	<p class="pageheader">${go.title}</p>
-	
+
 	<ark:ErrorMessagesTag errorMessages="${go.errorMessages}" />
 
 	<c:if test="${not empty go.message}">
 		<p>${go.message}</p>
 	</c:if>
 
-	<form method="post" action="/TwentyOne/Game/Play">
+	<form method="post" action="/TwentyOne/Game">
 		<table>
 			<tr>
 				<td><b>Name</b></td>
-				<td><input name="name"></td>
+				<td><input name="name" required></td>
 			</tr>
 			<tr>
 				<td><b>Dollars</b></td>
-				<td><input name="money" type="number" value="10"></td>
+				<td><input name="money" type="number" value="10" required></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="Let's play!"></td>
+				<td colspan="2"><input type="submit" value="Let's play!"
+					class="small blue button"></td>
 			</tr>
 		</table>
 	</form>

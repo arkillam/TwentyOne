@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import TwentyOne.beans.GameObject;
+import TwentyOne.beans.SimpleMessageBean;
 
 @Controller
 public class GameController {
@@ -53,19 +54,36 @@ public ModelAndView getstarted(HttpServletResponse response) throws IOException 
 public String play(@ModelAttribute("GameObject") GameObject go, BindingResult result, ModelMap model)
 		throws IOException {
 
+	if (go != null)
+		System.out.println(go.toString());
+
 	if (result.hasErrors()) {
-		go = new GameObject();
-		go.setTitle("Twenty One");
-		go.setMessage("Something went wrong.  :(");
-		go.getErrorMessages().clear();
+		SimpleMessageBean smb = new SimpleMessageBean();
+		smb.setTitle("Twenty One");
+		smb.setMessage("Something went wrong.  :(");
 		for (ObjectError oe : result.getAllErrors()) {
-			go.addErrorMessage(oe.getDefaultMessage());
+			smb.addErrorMessage(oe.getDefaultMessage());
 		}
+		model.put("smb", smb);
+		return "TitleAndMessage";
+	}
+
+	// if the player's name is not set, we have not started the game, so send them the game start page
+	if ((go == null) || (go.getName() == null) || (go.getName().trim().length() < 1)) {
+		go.setTitle("Twenty One");
 		model.put("go", go);
 		return "GameStart";
 	}
 
-	model.put("go", go);
+	// if the player ran out of money, send them the game start page
+	go.setMoney(0);
+	if ((go != null) && (go.getMoney() < 1)) {
+		go.setTitle("Twenty One");
+		// using an error instead of a normal message just to get the red formatting ...
+		go.addErrorMessage("You busted!");
+		model.put("go", go);
+		return "GameStart";
+	}
 
 	return "GamePlay";
 }
