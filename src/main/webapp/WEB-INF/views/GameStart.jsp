@@ -1,4 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="ark"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -22,17 +24,11 @@
 
 <body>
 	<p class="pageheader">${go.title}</p>
+	
+	<ark:ErrorMessagesTag errorMessages="${go.errorMessages}" />
 
 	<c:if test="${not empty go.message}">
 		<p>${go.message}</p>
-	</c:if>
-
-	<c:if test="${not empty go.errorMessages}">
-		<ul>
-			<c:forEach items="go.errorMessages" var="msg">
-				<li>${go.message}</li>
-			</c:forEach>
-		</ul>
 	</c:if>
 
 	<form method="post" action="/TwentyOne/Game/Play">
