@@ -35,7 +35,8 @@ public ModelAndView test(HttpServletResponse response) throws IOException {
 	smb.setTitle("Hello World!");
 	// smb.addErrorMessage("This is an error message.");
 	// smb.addErrorMessage("This is also an error message.");
-	smb.setMessage("Hello World!  This is the homepage.");
+	smb.setMessage(
+			"Hello World!  This is the homepage.  To play the game, <a href=\"/TwentyOne/Game\">click here</a>.");
 
 	rc.getModel().put("smb", smb);
 
