@@ -1,9 +1,14 @@
 package TwentyOne.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Represents a playing card.
+ * 
+ * @JsonIgnoreProperties used to ignore extra data when parsing CardBeans from JSON.
  */
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CardBean {
 
 /** card faces */
